@@ -1,0 +1,2675 @@
+<html>
+
+<head>
+    <!-- Jinja 2 is supported by Flask!  Woohoo! -->
+    <!-- Here come control statements if..else -->
+    <title>Home</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../../assets/css/masonry.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/svg.css">
+    <!-- flaj-icon-css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    
+    <!-- Define the svg weather icons -->
+    <svg class="defs-only" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="partly-cloudy-day">
+            <g fill="none" fill-rule="evenodd">
+                <circle cx="6.5" cy="6.5" r="3.5" fill="#F6A800"></circle>
+                <path fill="#F6A800" d="M6.5 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm5.077 2.441a.5.5 0 0 1-.074.704l-.777.629a.5.5 0 0 1-.63-.777l.778-.63a.5.5 0 0 1 .703.074zm-2.252 9.913a.5.5 0 0 1-.669-.23l-.438-.899a.5.5 0 0 1 .899-.438l.438.899a.5.5 0 0 1-.23.668zm-5.65 0a.5.5 0 0 1-.23-.668l.438-.9a.5.5 0 0 1 .9.44l-.44.898a.5.5 0 0 1-.668.23zM.164 7.95a.5.5 0 0 1 .374-.6l.975-.225a.5.5 0 1 1 .225.975l-.975.225a.5.5 0 0 1-.6-.375zm1.259-5.51a.5.5 0 0 1 .703-.073l.777.629a.5.5 0 0 1-.63.777l-.776-.63a.5.5 0 0 1-.074-.703z"></path>
+                <path fill="#E7EAEE" d="M4 14a3 3 0 1 1 .252-5.99 4.502 4.502 0 0 1 8.725 1.036A2.5 2.5 0 0 1 12.5 14H4z"></path>
+            </g>
+        </symbol>
+        
+        <symbol id="clear-day">
+            <g fill="none" fill-rule="evenodd">
+                <circle cx="8" cy="8" r="4" fill="#F3B60C"></circle>
+                <path stroke="#F3B60C" stroke-linecap="round" stroke-linejoin="round" d="M8 .75v1.5m5.127.623l-1.061 1.061M15.25 8h-1.5m-.623 5.127l-1.061-1.061M8 15.25v-1.5m-5.127-.623l1.061-1.061M.75 8h1.5m.623-5.127l1.061 1.061"></path>
+            </g>
+        </symbol>
+        
+        <symbol id="cloudy">
+            <g fill="none" fill-rule="evenodd">
+                <path fill="#8A99AD" d="M9.465 9H12v4H3a3 3 0 0 1-.996-5.83A4 4 0 1 1 9.465 9z"></path>
+                <path fill="#E7EAEE" d="M5.5 13a2.5 2.5 0 1 1 .608-4.926A4.002 4.002 0 0 1 14 9a2 2 0 1 1 0 4H5.5z"></path>
+            </g>
+        </symbol>
+        
+        <symbol id="rain">
+            <g fill="none" fill-rule="evenodd">
+                <path stroke="#E7EAEE" stroke-linecap="round" d="M1.5 14.5l2-2m1 2l2-2m1 2l2-2m1 2l2-2"></path>
+                <path fill="#8A99AD" d="M9.465 7H12v4H3a3 3 0 0 1-.996-5.83A4 4 0 1 1 9.465 7z"></path>
+                <path fill="#E7EAEE" d="M5.5 11a2.5 2.5 0 1 1 .608-4.926A4.002 4.002 0 0 1 14 7a2 2 0 1 1 0 4H5.5z"></path>
+            </g>
+        </symbol>
+        
+        <symbol id="elevation">
+            <g>
+                <path style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.18026531;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+                d="M 6.2407564,0.31066873 4.2794923,4.650598 0.2638798,13.537692 8.2091332,13.601827 16.154697,13.666364 12.225055,4.7151338 11.592329,3.2737016 9.5376712,7.8204663 6.2407564,0.31066873 Z"
+                id="path4214" inkscape:connector-curvature="0" />
+            </g>
+        </symbol>
+    </svg>
+</head>
+
+<body>
+
+    Happily hosted in <a href="https://www.polarsteps.com/AlvaroP/841757-southampton-madrid-2018"  target="_blank">PolarSteps</a>
+    <hr>
+
+    <!-- Map -->
+    <div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgPHNjcmlwdD5MX1BSRUZFUl9DQU5WQVM9ZmFsc2U7IExfTk9fVE9VQ0g9ZmFsc2U7IExfRElTQUJMRV8zRD1mYWxzZTs8L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4yLjAvZGlzdC9sZWFmbGV0LmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2FqYXguZ29vZ2xlYXBpcy5jb20vYWpheC9saWJzL2pxdWVyeS8xLjExLjEvanF1ZXJ5Lm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvanMvYm9vdHN0cmFwLm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuanMiPjwvc2NyaXB0PgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4yLjAvZGlzdC9sZWFmbGV0LmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvY3NzL2Jvb3RzdHJhcC10aGVtZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vZm9udC1hd2Vzb21lLzQuNi4zL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9yYXdnaXQuY29tL3B5dGhvbi12aXN1YWxpemF0aW9uL2ZvbGl1bS9tYXN0ZXIvZm9saXVtL3RlbXBsYXRlcy9sZWFmbGV0LmF3ZXNvbWUucm90YXRlLmNzcyIvPgogICAgPHN0eWxlPmh0bWwsIGJvZHkge3dpZHRoOiAxMDAlO2hlaWdodDogMTAwJTttYXJnaW46IDA7cGFkZGluZzogMDt9PC9zdHlsZT4KICAgIDxzdHlsZT4jbWFwIHtwb3NpdGlvbjphYnNvbHV0ZTt0b3A6MDtib3R0b206MDtyaWdodDowO2xlZnQ6MDt9PC9zdHlsZT4KICAgIAogICAgPHN0eWxlPiNtYXBfZDU3OTFiMjExNzhkNGYwNTliZjY1NGM0OGQyYjE5MzUgewogICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTsKICAgICAgICB3aWR0aDogMTAwLjAlOwogICAgICAgIGhlaWdodDogMTAwLjAlOwogICAgICAgIGxlZnQ6IDAuMCU7CiAgICAgICAgdG9wOiAwLjAlOwogICAgICAgIH0KICAgIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+ICAgIAogICAgCiAgICA8ZGl2IGNsYXNzPSJmb2xpdW0tbWFwIiBpZD0ibWFwX2Q1NzkxYjIxMTc4ZDRmMDU5YmY2NTRjNDhkMmIxOTM1IiA+PC9kaXY+CjwvYm9keT4KPHNjcmlwdD4gICAgCiAgICAKICAgIAogICAgICAgIHZhciBib3VuZHMgPSBudWxsOwogICAgCgogICAgdmFyIG1hcF9kNTc5MWIyMTE3OGQ0ZjA1OWJmNjU0YzQ4ZDJiMTkzNSA9IEwubWFwKAogICAgICAgICdtYXBfZDU3OTFiMjExNzhkNGYwNTliZjY1NGM0OGQyYjE5MzUnLCB7CiAgICAgICAgY2VudGVyOiBbNDUsIDEwXSwKICAgICAgICB6b29tOiA0LAogICAgICAgIG1heEJvdW5kczogYm91bmRzLAogICAgICAgIGxheWVyczogW10sCiAgICAgICAgd29ybGRDb3B5SnVtcDogZmFsc2UsCiAgICAgICAgY3JzOiBMLkNSUy5FUFNHMzg1NywKICAgICAgICB6b29tQ29udHJvbDogdHJ1ZSwKICAgICAgICB9KTsKCiAgICAKICAgIAogICAgdmFyIHRpbGVfbGF5ZXJfNzVkMzQ5N2Q4ZjdhNDU1OTgxYzNkMjJlYjgxODJhZmYgPSBMLnRpbGVMYXllcigKICAgICAgICAnaHR0cHM6Ly9zdGFtZW4tdGlsZXMte3N9LmEuc3NsLmZhc3RseS5uZXQvd2F0ZXJjb2xvci97en0ve3h9L3t5fS5qcGcnLAogICAgICAgIHsKICAgICAgICAiYXR0cmlidXRpb24iOiBudWxsLAogICAgICAgICJkZXRlY3RSZXRpbmEiOiBmYWxzZSwKICAgICAgICAibWF4TmF0aXZlWm9vbSI6IDE4LAogICAgICAgICJtYXhab29tIjogMTgsCiAgICAgICAgIm1pblpvb20iOiAwLAogICAgICAgICJub1dyYXAiOiBmYWxzZSwKICAgICAgICAic3ViZG9tYWlucyI6ICJhYmMiCn0pLmFkZFRvKG1hcF9kNTc5MWIyMTE3OGQ0ZjA1OWJmNjU0YzQ4ZDJiMTkzNSk7CiAgICAKICAgICAgICAgICAgICAgIHZhciBwb2x5X2xpbmVfY2MyMDU1ZDg2NjU3NDE5MjgyNGZjMDhkNGMxYzJiNWIgPSBMLnBvbHlsaW5lKAogICAgICAgICAgICAgICAgICAgIFtbNTAuOTIyNzEzMiwgLTEuMzk1MjU2MV0sIFs1MC44OTkwNDc3LCAtMS4zOTIzMjI1XSwgWzUwLjg5ODAyMDI5NDc4NzUsIC0xLjM3NzI5MTcyOTU3NjQ0XSwgWzUwLjg1ODE1NTUsIC0xLjMxMjk5MzFdLCBbNTAuODU1LCAtMS4zMDkxODQ5XSwgWzUwLjg1MjA4NDYsIC0xLjMxMTA2NzRdLCBbNTAuODUzMDY2OCwgLTEuMjk4MTY4NF0sIFs1MC44NDkwMTYyNjE2ODY2LCAtMS4yODE3MzI2NTcwOTQwNV0sIFs1MC44MTc2MTY0LCAtMS4yMzYyNTU1XSwgWzUwLjgwOTcwNzk3NzMwNzcsIC0xLjIxMzc5MjMzMjgyMDc1XSwgWzUwLjc5OTgwMDE0MDAxNTMsIC0xLjIwMTE0NzU3MjE3Njc5XSwgWzUwLjc5MTI1MTQ3ODIyNSwgLTEuMTczMTc1MjAzMTI2NDddLCBbNTAuNzkyNzk5OTYzMzI5MiwgLTEuMTQ4NjQ5MjAwNTU5NzNdLCBbNTAuNzk0NzQ0ODEyOTU1OSwgLTEuMTI2ODU4MjAwOTE5ODRdLCBbNTAuNzk4MTQ3MywgLTEuMTA2ODU3NF0sIFs1MC43OTk3OTUxMTc2NDMyLCAtMS4xMDMxNTE0MDQwNDU4N10sIFs1MC44MDAwNjM4NTIzOTc4LCAtMS4wOTY1NzM0MzIwNzM1NV0sIFs1MC44MDQxOTYyNzU4OTY5LCAtMS4wOTAzOTI5Mjc3OTY1M10sIFs1MC44MDc5NjU2NDgxOTMsIC0xLjA4OTcxNTEzMDI0NzY5XSwgWzUwLjgxMDI2MjU2Mzg4NDcsIC0xLjA4Njk3NjExNDgzMzk5XSwgWzUwLjgxMjQ4NTUsIC0xLjA4NjM3MjFdLCBbNTAuODExNzAyNCwgLTEuMDkzMTg5OV0sIFs1MC44MDg0MjUzLCAtMS4wODkxOTkzXSwgWzUwLjgxMzcxMTIsIC0xLjA5MTkyMTRdLCBbNTAuODExNTAwMSwgLTEuMDkyNDA0XSwgWzUwLjgwODQyNTMsIC0xLjA4OTE5OTNdLCBbNTAuODEzNzExMiwgLTEuMDkxOTIxNF0sIFs1MC44MTEyMjQ3LCAtMS4xMDMwMTY5XSwgWzUwLjgwNjA3OTYsIC0xLjExNTcwMTVdLCBbNTAuNzc5NDgxNSwgLTEuMTAyOTUyMl0sIFs1MC43MTQyMjIzLCAtMS4wNDY0MzEzXSwgWzUwLjY5ODM1NjgsIC0xLjA0MTY1NjVdLCBbNTAuNjgxNzY0LCAtMS4wNDM4NDNdLCBbNTAuNjcxNjQ1LCAtMS4wNjM1MV0sIFs1MC42NjAzNTcyLCAtMS4wODA1NzM1XSwgWzQ4LjYzOTQyNTEsIC0yLjAzNjg5MTddLCBbNDguNjQxMjY1NywgLTIuMDI4NzM3M10sIFs0OC42NDQ2NjcxLCAtMi4wMjMwNTc2XSwgWzQ4LjY1MDg1OTE5NDEwNzcsIC0yLjAyMzQzNDkyMjc1NDk0XSwgWzQ4LjYzNjEyNDQsIC0yLjAyMTI2MTNdLCBbNDguNjMyMDM0OSwgLTIuMDEwMzU5N10sIFs0OC42MTY3Mjk3LCAtMi4wMDEyODMyXSwgWzQ4LjYwMDM1ODQsIC0xLjk4NTMwNDRdLCBbNDguNTg3MjczNywgLTEuOTU2MDIzMV0sIFs0OC41ODAxNDg1LCAtMS45NDk5NjY4XSwgWzQ4LjU2NzU1NjUsIC0xLjk3MDA4NjNdLCBbNDguNTQwMjc2OTM2MjQzNiwgLTEuOTM3NTYzNTU2NjI5NjZdLCBbNDguNTEzODQ1MDEyODkyNywgLTEuOTQ3NjQzOTQ5OTUwMV0sIFs0OC41MDM4Njk3LCAtMS45NTk0NzY1XSwgWzQ4LjQ4ODMwMDgsIC0xLjk4MTk2MjhdLCBbNDguNDcyMzQzOTMzNjUxNywgLTEuOTgyMTQzMTIzMzAwNF0sIFs0OC4zODExNjk1LCAtMS45Nzk4NzIyXSwgWzQ4LjMwMDc3MTcsIC0xLjkzOTM0MDhdLCBbNDguMjI0MTEzNCwgLTEuODk3NTk2M10sIFs0OC4yMTU4NzQ4LCAtMS44OTIyMzldLCBbNDguMTU2MTM3NSwgLTEuODMyNzg0NF0sIFs0OC4xMzk5NTY3LCAtMS44MjgzNDI4XSwgWzQ4LjEyNDE3NDQsIC0xLjgxNzc3MzRdLCBbNDguMTAwNzgzNywgLTEuNzk1NjY1OF0sIFs0OC4wOTQ5NzAxLCAtMS43OTY0NjY1XSwgWzQ4LjA1NTE0MDUsIC0xLjc4MTQ3NDhdLCBbNDguMDUwNzA3MiwgLTEuNzkyNzYxNl0sIFs0OC4wMzI4MTE1LCAtMS44MTExODc4XSwgWzQ4LjAyMzk4NjkyMzM5MzYsIC0xLjc4MjI4NDk1MjIxMTMyXSwgWzQ4LjAyODM3MTUsIC0xLjc2OTg5ODRdLCBbNDguMDAyMzM4NiwgLTEuNzc1ODU5XSwgWzQ3Ljg0MjcxMjcsIC0xLjY4MDk2NDJdLCBbNDcuODMzOTM5NSwgLTEuNjg1NzY0Nl0sIFs0Ny42MjI1OTMyLCAtMS42MTMxMjIxXSwgWzQ3LjQzNzk2NjgsIC0xLjUwMTI5NV0sIFs0Ny40MDM3MDYsIC0xLjUyMDkxOTJdLCBbNDcuMjIxMTIwMSwgLTEuNTU1NTAzMl0sIFs0Ny4yMTQ3MDIzLCAtMS41NTE2MDY0XSwgWzQ3LjE3NzI3MjYsIC0xLjY3ODU5MzNdLCBbNDcuMDg5NzUwNSwgLTEuNzMyMjg3NF0sIFs0Ny4wNTUzNTQ5LCAtMS43MjY4Njk5XSwgWzQ2Ljk2MzMzNDYsIC0xLjc1NDQ1NjhdLCBbNDYuOTAyMDU5NSwgLTEuNjgzNzQ5OF0sIFs0Ni44MzA2MSwgLTEuNTk1NjE2XSwgWzQ2Ljc2OTUyMSwgLTEuNTEwMjg5MV0sIFs0Ni42NzE5MjM2MywgLTEuNDM3NTM0MDJdLCBbNDYuNjgyMTAwOSwgLTEuNDM1MjM2OV0sIFs0Ni42Nzc2NDksIC0xLjQzOTk3MTNdLCBbNDYuNjczNTE3NSwgLTEuNDMyNDA3Ml0sIFs0Ni42NzQxMTIzLCAtMS40NDE1NjgxXSwgWzQ2LjU3MzU1MjksIC0xLjI4NDkwMzZdLCBbNDYuNDQ5MTQwNiwgLTEuMTY3MTg2M10sIFs0Ni40NTU0NzQxLCAtMS4xNjQ5MjExXSwgWzQ2LjE4NzQ2NTcsIC0xLjAxMjY0OTNdLCBbNDUuOTM3MTY0NSwgLTAuOTYyODgzOV0sIFs0NS44MzQwMzUsIC0wLjkxNDY5MDFdLCBbNDUuNjY1NDkyMSwgLTAuOTcwNjAzNF0sIFs0NS42MTcwMzQyLCAtMS4wMjk2OTc1XSwgWzQ1LjYyMTkxMywgLTEuMDMwODFdLCBbNDUuMzU2MzgwOSwgLTEuMDYxNjA3NV0sIFs0NS4xODU2MDQyLCAtMS4wNTg4NjExXSwgWzQ0Ljk5NzU2NjQsIC0xLjA3ODM2MjRdLCBbNDQuOTk5ODM1NywgLTEuMDkwNjMwNF0sIFs0NS4wMDc0MDgyLCAtMS4xMDY1MzA4XSwgWzQ1LjAwMzU2MzEsIC0xLjEzMDY2NzZdLCBbNDUuMDA1MTI5MywgLTEuMTIzNTc3Ml0sIFs0NS4wMDM2MDQ2LCAtMS4xMzA0MTcyXSwgWzQ0Ljc5NDI3MTYsIC0xLjEzMzQxMTldLCBbNDQuNjM3OTk5NywgLTAuOTY4MjMzMV0sIFs0NC41NDczMjg4LCAtMC44NzMxNjIxXSwgWzQ0LjQ4MjAzNjEsIC0wLjg4MzY1MTFdLCBbNDQuNDY5NzUwOCwgLTAuODA0MzY2OV0sIFs0NC4yMTI4NzgyLCAtMC45MTkzMDYxXSwgWzQ0LjAyMDA1MTk5NTEwNTgsIC0wLjg2NTgyNDMzMTg1NjgyN10sIFs0NC4wMTQ5Nzg5LCAtMC44NjcwNjI1XSwgWzQzLjgzNjE2ODYsIC0wLjgwODk4NjFdLCBbNDMuNTMwMzg4OCwgLTAuOTY5NDQyNl0sIFs0My4zMjMzOTcsIC0xLjAzNDU1OTZdLCBbNDMuMjMzNzAwMiwgLTEuMDk1NTYwNV0sIFs0My4xNjM0MjcxLCAtMS4yMzU3NDI2XSwgWzQzLjA2MDkzOTUsIC0xLjMwODY1MDNdLCBbNDMuMDQwODc5MSwgLTEuMzMwMjk5Ml0sIFs0My4wMjAwNzA1LCAtMS4zMjQzNjk4XSwgWzQzLjAwOTM2NjgzOTg2NjUsIC0xLjMyMDMxMDM0NzkyNzg5XSwgWzQyLjgzNjM1ODIsIC0xLjU4NjcyODZdLCBbNDIuNTY5MTIxNCwgLTIuMTk0MDk1Nl0sIFs0Mi40NjY1MzQxLCAtMi40NDYxNjc5XSwgWzQyLjQwNTQyMiwgLTIuNjI1NDUzN10sIFs0Mi40MzQzMzEsIC0yLjgxNDMzMzZdLCBbNDIuNDQwNTA4NCwgLTIuOTUzNjU2M10sIFs0Mi4zNDc0MzkyLCAtMy42Njc4NTE2XSwgWzQyLjI4ODY1MzMsIC00LjE0MTk0MDFdLCBbNDIuMjkwNDYwMSwgLTQuMTQ1NTUxXSwgWzQyLjI5NDA5MjcsIC00LjE1MTAzODldLCBbNDIuMjk3MTUsIC00LjE1MzU2OTNdLCBbNDIuMzAzNjQ2NywgLTQuMTYwNjY2M10sIFs0Mi4zMDc4MjY5LCAtNC4xNjk1MjU2XSwgWzQyLjMwODU3NTIsIC00LjE3NjMxOTFdLCBbNDIuMzA3MDM1NSwgLTQuMTc5NzIxXSwgWzQyLjMwNDc2NzEsIC00LjE4NTE0NzJdLCBbNDIuMzAyMzU1MywgLTQuMTk1MTU2M10sIFs0Mi4yOTk2MDA3LCAtNC4yMDYyOTA0XSwgWzQyLjI5NzYzNDcsIC00LjIxNDI5MDVdLCBbNDIuMjkyNzk0OCwgLTQuMjIzNzk3OV0sIFs0Mi4yNzgwOTIxLCAtNC4yNDYyODU2XSwgWzQyLjI1Mzk1MzMsIC00LjM1NjI2ODRdLCBbNDIuMjU4OTI1NiwgLTQuMzk0NzQ1NV0sIFs0Mi4yNjQ3MjczLCAtNC4zOTk4NDUyXSwgWzQyLjI2NTM2NTksIC00LjQwNzQ3ODZdLCBbNDIuMjY1MDkxOCwgLTQuNDE1NDIxNl0sIFs0Mi4yNzkzNDIzLCAtNC40NzI2MjkxXSwgWzQyLjI4NDA5NjUsIC00LjQ4MDA2NDFdLCBbNDIuMjg5MTQ4MSwgLTQuNDg2NjkyNV0sIFs0Mi4zMjc5OTQyLCAtNC41NzgwMzUxXSwgWzQyLjMzMzcwNTYsIC00LjU4OTMxNzRdLCBbNDIuMzM3NDM2OSwgLTQuNTk3MDEwM10sIFs0Mi4zMzc1NTk2LCAtNC42MDMwMDM4XSwgWzQyLjMzODY5NzQsIC00LjYwNjE5NzddLCBbNDIuMzQwMzUyNiwgLTQuNjA5NjYxNV0sIFs0Mi4zNDExNzQsIC00LjYxODc1NjFdLCBbNDIuMzQxOTM4MSwgLTQuNjI3NDYwOV0sIFs0Mi4zNDI4MTI2LCAtNC42Mzc0NzUyXSwgWzQyLjM0MzU2NjIsIC00LjY0NzQ1OThdLCBbNDIuMzQ1MTA4NiwgLTQuNjU3NTM0Nl0sIFs0Mi4zNDQxMDE1LCAtNC42NjcwNzddLCBbNDIuMzQzMzU3NSwgLTQuNjc2MTg3N10sIFs0Mi4zNDIzODM2LCAtNC42ODU0ODg0XSwgWzQyLjM0MTMyNjYsIC00LjY5NDgxNDldLCBbNDIuMzQwMDYwMSwgLTQuNzA0NjI5NV0sIFs0Mi4zMzg2NDM4LCAtNC43MTQ5OTcyXSwgWzQyLjMzNzI5MDgsIC00LjcyNDI5MTFdLCBbNDIuMzM1ODQ3NywgLTQuNzMzOTk0OF0sIFs0Mi4zMjk2NTcsIC00Ljc3MTIxOTZdLCBbNDIuMzI5MDMyMSwgLTQuNzgwNDgxMV0sIFs0Mi4zMjkwMzIyLCAtNC43ODk5ODg1XSwgWzQyLjMyODg2NjMsIC00Ljc5OTM2NThdLCBbNDIuMzI5NDQ1OSwgLTQuODA5NDM4NF0sIFs0Mi4zMzI4ODU2LCAtNC44MTc5MDQxXSwgWzQyLjMzNjU0NzUsIC00LjgyNDg0Nl0sIFs0Mi4zNDAwNjg3LCAtNC44MzI1NDk1XSwgWzQyLjM0MjY4NzUsIC00LjgzOTY2OTJdLCBbNDIuMzU0NjIwNywgLTQuODY1NjU5NV0sIFs0Mi4zNjM4OTgzLCAtNC45MzgyMTk5XSwgWzQyLjM2NTA4MjUsIC00Ljk0NzIxODddLCBbNDIuMzY1MDY4NSwgLTQuOTU4NDIxXSwgWzQyLjM2NTYxNDEsIC00Ljk2NjU5NDldLCBbNDIuMzY1OTg0NSwgLTQuOTcyOTg1OF0sIFs0Mi4zNjY0ODM3LCAtNC45OTA4NDcxXSwgWzQyLjM2NzkyNTIsIC01LjAwNDg2NzZdLCBbNDIuMzY5ODA5NCwgLTUuMDEyMTE5N10sIFs0Mi4zNzMzMjQ2LCAtNS4wMTczNzk5XSwgWzQyLjM3NzIyNzUsIC01LjAyMzA3OTJdLCBbNDIuMzc4MTI3NSwgLTUuMDM3MTgxOV0sIFs0Mi4zNzYwNjU4LCAtNS4wNDM4OTQzXSwgWzQyLjM3NjE3ODUsIC01LjA1NDQ3NThdLCBbNDIuMzc4MTQ2NSwgLTUuMDYyOTJdLCBbNDIuMzgyMjAyOCwgLTUuMDcxODk0XSwgWzQyLjM4ODk4MDksIC01LjEzNjg3NThdLCBbNDIuMzg4MTQ3OCwgLTUuMTQwNzQyOF0sIFs0Mi4zODk1NTM0LCAtNS4xNDU4NjkyXSwgWzQyLjM5MjI3MDksIC01LjE1MjkyOThdLCBbNDIuMzk1NTkyNywgLTUuMTU5NzA1NF0sIFs0Mi4zOTg4Njc5LCAtNS4xNjkwNzczXSwgWzQyLjQwMTQ4NDMsIC01LjE3NTYzNjJdLCBbNDIuNDA0OTMzNywgLTUuMTg0MjgzNV0sIFs0Mi40MDkwMiwgLTUuMTkzMDU0OF0sIFs0Mi40MTMxMjI1LCAtNS4yMDIyMDMxXSwgWzQyLjQxNzQ2NTUsIC01LjIxMDQwMjFdLCBbNDIuNDIwMDExNywgLTUuMjE1MjQ2XSwgWzQyLjQyMjMxNTQsIC01LjIxOTgyN10sIFs0Mi40MjQzNTQ0LCAtNS4yMjQzMjQxXSwgWzQyLjQyODQ5NjUsIC01LjIzMTg2OThdLCBbNDIuNDMyNzEzOSwgLTUuMjQyMjEwOV0sIFs0Mi40MzY4OTY1LCAtNS4yNTA1MzQ4XSwgWzQyLjQ0MTkxOTYsIC01LjI1ODQxM10sIFs0Mi40NDM5MTY0LCAtNS4yNjU0Mzc4XSwgWzQyLjQ0ODU4NTYsIC01LjI2OTM0NDldLCBbNDIuNDUyNTg3NywgLTUuMjc5NTE3XSwgWzQyLjQ1NjkzMzMsIC01LjI4OTc0NDZdLCBbNDIuNDYwMzYzMywgLTUuMjk5OTE0M10sIFs0Mi40NjM4ODM0LCAtNS4zMTEwNjVdLCBbNDIuNDY0OTA5MSwgLTUuMzIzNDQ3M10sIFs0Mi40NjgzNzIxLCAtNS4zMzI0OTczXSwgWzQyLjQ3MDQ4MTIsIC01LjM0MDM1MDldLCBbNDIuNDcxODcwNywgLTUuMzUwODA1OF0sIFs0Mi40NzIxNzY2LCAtNS4zNTQ1MjYyXSwgWzQyLjQ2OTQ5NDgsIC01LjM1Nzc3OTldLCBbNDIuNDY1NzQ2OCwgLTUuMzU5NzQ4Nl0sIFs0Mi40NjI4MjUzLCAtNS4zNjExNDA5XSwgWzQyLjQ1ODc1OCwgLTUuMzY3NDYyXSwgWzQyLjQ1ODA0MDUsIC01LjM3MDkxMzFdLCBbNDIuNDU4Njk5MywgLTUuMzc4MjIwNF0sIFs0Mi40NTk0NDAxLCAtNS4zODc0NDZdXSwKICAgICAgICAgICAgICAgICAgICB7CiAgImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLAogICJjb2xvciI6ICJibGFjayIsCiAgImRhc2hBcnJheSI6IG51bGwsCiAgImRhc2hPZmZzZXQiOiBudWxsLAogICJmaWxsIjogZmFsc2UsCiAgImZpbGxDb2xvciI6ICJibGFjayIsCiAgImZpbGxPcGFjaXR5IjogMC4yLAogICJmaWxsUnVsZSI6ICJldmVub2RkIiwKICAibGluZUNhcCI6ICJyb3VuZCIsCiAgImxpbmVKb2luIjogInJvdW5kIiwKICAibm9DbGlwIjogZmFsc2UsCiAgIm9wYWNpdHkiOiAxLjAsCiAgInNtb290aEZhY3RvciI6IDEuMCwKICAic3Ryb2tlIjogdHJ1ZSwKICAid2VpZ2h0IjogMwp9CiAgICAgICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgICAgIC5hZGRUbyhtYXBfZDU3OTFiMjExNzhkNGYwNTliZjY1NGM0OGQyYjE5MzUpOwogICAgICAgICAgICAKICAgIAogICAgICAgIHZhciBtYXJrZXJfN2JlMTZhMDYwZWM0NGMzOTliMzkyZTkzNDc1ZDNjYWMgPSBMLm1hcmtlcigKICAgICAgICAgICAgWzUwLjkyMjcxMzIsIC0xLjM5NTI1NjFdLAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICBpY29uOiBuZXcgTC5JY29uLkRlZmF1bHQoKQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICApLmFkZFRvKG1hcF9kNTc5MWIyMTE3OGQ0ZjA1OWJmNjU0YzQ4ZDJiMTkzNSk7CiAgICAgICAgCiAgICAKCiAgICAgICAgICAgICAgICB2YXIgZGl2X2ljb25fN2ViMzYyNTg0YjQzNDE1MWE0ZmE0YTlhMzIyMDNjOWUgPSBMLmRpdkljb24oewogICAgICAgICAgICAgICAgICAgIGljb25TaXplOiBbMTUwLDM2XSwKICAgICAgICAgICAgICAgICAgICBpY29uQW5jaG9yOiBbMzAsMjBdLAogICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZTogJ2VtcHR5JywKICAgICAgICAgICAgICAgICAgICBodG1sOiAnPGRpdiBzdHlsZT0iZm9udC1zaXplOiAzNXB0bDtjb2xvcjpibGFjayI+U291dGhhbXB0b248L2Rpdj4nLAogICAgICAgICAgICAgICAgICAgIH0pOwogICAgICAgICAgICAgICAgbWFya2VyXzdiZTE2YTA2MGVjNDRjMzk5YjM5MmU5MzQ3NWQzY2FjLnNldEljb24oZGl2X2ljb25fN2ViMzYyNTg0YjQzNDE1MWE0ZmE0YTlhMzIyMDNjOWUpOwogICAgICAgICAgICAKICAgIAoKICAgICAgICAgICAgdmFyIGNpcmNsZV9kM2U3Y2MxZDJlYzM0MjA0OTZkOGNhMWRmMTUyMzI1NiA9IEwuY2lyY2xlKAogICAgICAgICAgICAgICAgWzUwLjkyMjcxMzIsIC0xLjM5NTI1NjFdLAogICAgICAgICAgICAgICAgewogICJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwKICAiY29sb3IiOiAiYmxhY2siLAogICJkYXNoQXJyYXkiOiBudWxsLAogICJkYXNoT2Zmc2V0IjogbnVsbCwKICAiZmlsbCI6IHRydWUsCiAgImZpbGxDb2xvciI6ICJibGFjayIsCiAgImZpbGxPcGFjaXR5IjogMC4yLAogICJmaWxsUnVsZSI6ICJldmVub2RkIiwKICAibGluZUNhcCI6ICJyb3VuZCIsCiAgImxpbmVKb2luIjogInJvdW5kIiwKICAib3BhY2l0eSI6IDEuMCwKICAicmFkaXVzIjogMTUwMDAsCiAgInN0cm9rZSI6IHRydWUsCiAgIndlaWdodCI6IDMKfQogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgLmFkZFRvKG1hcF9kNTc5MWIyMTE3OGQ0ZjA1OWJmNjU0YzQ4ZDJiMTkzNSk7CiAgICAgICAgICAgIAogICAgCiAgICAgICAgdmFyIG1hcmtlcl9lNDIzMWY5YWQ2MDc0NTQ0OGVjMTc2NWViOWQ3NzBkZCA9IEwubWFya2VyKAogICAgICAgICAgICBbNDIuNDU5NDQwMSwgLTUuMzg3NDQ2XSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgaWNvbjogbmV3IEwuSWNvbi5EZWZhdWx0KCkKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgKS5hZGRUbyhtYXBfZDU3OTFiMjExNzhkNGYwNTliZjY1NGM0OGQyYjE5MzUpOwogICAgICAgIAogICAgCgogICAgICAgICAgICAgICAgdmFyIGRpdl9pY29uXzZiYzU2OTRkMTA2OTRhM2I4MGQ3MTVkMDg5YTJlOTY1ID0gTC5kaXZJY29uKHsKICAgICAgICAgICAgICAgICAgICBpY29uU2l6ZTogWzE1MCwzNl0sCiAgICAgICAgICAgICAgICAgICAgaWNvbkFuY2hvcjogWzMwLDIwXSwKICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU6ICdlbXB0eScsCiAgICAgICAgICAgICAgICAgICAgaHRtbDogJzxkaXYgc3R5bGU9ImZvbnQtc2l6ZTogNzBwdGw7Y29sb3I6YmxhY2siPk1hbGlsbG9zPC9kaXY+JywKICAgICAgICAgICAgICAgICAgICB9KTsKICAgICAgICAgICAgICAgIG1hcmtlcl9lNDIzMWY5YWQ2MDc0NTQ0OGVjMTc2NWViOWQ3NzBkZC5zZXRJY29uKGRpdl9pY29uXzZiYzU2OTRkMTA2OTRhM2I4MGQ3MTVkMDg5YTJlOTY1KTsKICAgICAgICAgICAgCiAgICAKCiAgICAgICAgICAgIHZhciBjaXJjbGVfNDFiMzJhMzE5ODFmNGJlNTllMTMyZTNjOTg4YWVkNTYgPSBMLmNpcmNsZSgKICAgICAgICAgICAgICAgIFs0Mi40NTk0NDAxLCAtNS4zODc0NDZdLAogICAgICAgICAgICAgICAgewogICJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwKICAiY29sb3IiOiAiYmxhY2siLAogICJkYXNoQXJyYXkiOiBudWxsLAogICJkYXNoT2Zmc2V0IjogbnVsbCwKICAiZmlsbCI6IHRydWUsCiAgImZpbGxDb2xvciI6ICJibGFjayIsCiAgImZpbGxPcGFjaXR5IjogMC4yLAogICJmaWxsUnVsZSI6ICJldmVub2RkIiwKICAibGluZUNhcCI6ICJyb3VuZCIsCiAgImxpbmVKb2luIjogInJvdW5kIiwKICAib3BhY2l0eSI6IDEuMCwKICAicmFkaXVzIjogMTUwMDAsCiAgInN0cm9rZSI6IHRydWUsCiAgIndlaWdodCI6IDMKfQogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgLmFkZFRvKG1hcF9kNTc5MWIyMTE3OGQ0ZjA1OWJmNjU0YzQ4ZDJiMTkzNSk7CiAgICAgICAgICAgIAogICAgCiAgICAgICAgICAgICAgICAKCiAgICAgICAgICAgICAgICBtYXBfZDU3OTFiMjExNzhkNGYwNTliZjY1NGM0OGQyYjE5MzUuZml0Qm91bmRzKAogICAgICAgICAgICAgICAgICAgIFtbNDIuMjUzOTUzMywgLTUuMzg3NDQ2XSwgWzUwLjkyMjcxMzIsIC0wLjgwNDM2NjldXSwKICAgICAgICAgICAgICAgICAgICB7fQogICAgICAgICAgICAgICAgICAgICk7CiAgICAgICAgICAgIAo8L3NjcmlwdD4="
+        style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen
+        webkitallowfullscreen mozallowfullscreen></iframe></div>
+    </div>
+    
+    <!-- Trip info -->
+    <hr>
+    
+    <table style="width:100%">
+        <tr>
+            <td align="center"><span class="large-icon fas fa-calendar-alt fa-4x"></span> <br> 13 days </td>
+            <td align="center"><span class="large-icon fas fa-globe-africa fa-4x"></span> <br> 1458 km </td>
+        </tr>
+        <tr>
+            <td align="center"><span class="large-icon fas fa-camera fa-4x"></span> <br> 116 photos </td>
+            <td align="center"><span class="large-icon fas fa-map-marker-alt fa-4x"></span> <br> 67 steps </td>
+        </tr>
+    </table>
+    
+    <!-- Detail all the steps in the itinerary -->
+    <div class="steps">
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Southampton</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-gb"></span> N 50.9227057, E -1.3952431
+            </div>
+            <!-- Date -->
+            <em>Mon, 23 Jul 2018 18:04 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            24&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            17m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/e00e49bc-eef3-49c5-9b26-833a0ff32363_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/e00e49bc-eef3-49c5-9b26-833a0ff32363_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/545d64cd-05a8-4900-90ce-413d4c7cbc4a_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/545d64cd-05a8-4900-90ce-413d4c7cbc4a_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/9c4f5a25-073a-469f-b9f8-7cd57fe57c41_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/9c4f5a25-073a-469f-b9f8-7cd57fe57c41_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Foto inicial de prueba.
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Hamble</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-gb"></span> N 50.8581555, E -1.3129931
+            </div>
+            <!-- Date -->
+            <em>Tue, 24 Jul 2018 14:38 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            25&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            5m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/c1087ef8-22bc-473e-b643-520d79426d86_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/c1087ef8-22bc-473e-b643-520d79426d86_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/8ded59e2-cfe2-43b9-8fc3-30ba8d1b7250_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/8ded59e2-cfe2-43b9-8fc3-30ba8d1b7250_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Lee</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-gb"></span> N 50.8176164, E -1.2362555
+            </div>
+            <!-- Date -->
+            <em>Tue, 24 Jul 2018 15:30 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            26&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            4m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/cbd810c0-db27-45dd-ac50-4addf6135626_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/cbd810c0-db27-45dd-ac50-4addf6135626_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Gosport</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-gb"></span> N 50.7927999633292, E -1.14864920055973
+            </div>
+            <!-- Date -->
+            <em>Tue, 24 Jul 2018 15:59 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            26&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            4m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/6e082f23-4517-490f-b0ad-5c79156df418_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/6e082f23-4517-490f-b0ad-5c79156df418_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/a1b1f521-3b51-4e05-85ed-ea3e9df2759a_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/a1b1f521-3b51-4e05-85ed-ea3e9df2759a_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/9d2c85f9-c129-4a7d-82bc-e7f3943d5f77_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/9d2c85f9-c129-4a7d-82bc-e7f3943d5f77_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Portsmouth</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-gb"></span> N 50.8124855, E -1.0863721
+            </div>
+            <!-- Date -->
+            <em>Tue, 24 Jul 2018 19:11 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            25&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            7m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/fffb4579-9f59-4b94-bee3-70b155c4b770_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/fffb4579-9f59-4b94-bee3-70b155c4b770_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/518f1bb9-9ff3-45ba-9802-132e2412105a_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/518f1bb9-9ff3-45ba-9802-132e2412105a_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Ferry a St Malo</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-gb"></span> N 50.8112247, E -1.1030169
+            </div>
+            <!-- Date -->
+            <em>Tue, 24 Jul 2018 20:31 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            22&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            0m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/85306662-f3cb-4d89-836c-69956dff7655_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/85306662-f3cb-4d89-836c-69956dff7655_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d866b760-efdd-40f3-94b3-0a645f468b66_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d866b760-efdd-40f3-94b3-0a645f468b66_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d155a30c-eba3-469b-a0bb-410f679386bd_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d155a30c-eba3-469b-a0bb-410f679386bd_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/094e5d7b-9ccb-4044-a028-40c5e59af4ae_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/094e5d7b-9ccb-4044-a028-40c5e59af4ae_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Saint-Malo</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 48.6394251, E -2.0368917
+            </div>
+            <!-- Date -->
+            <em>Wed, 25 Jul 2018 07:02 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            18&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            0m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/0c3b801f-64a8-4ce5-9412-16870bea3ae9_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/0c3b801f-64a8-4ce5-9412-16870bea3ae9_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/368ec582-f96d-485d-88b8-9669e6140b2f_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/368ec582-f96d-485d-88b8-9669e6140b2f_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Saint-Père</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 48.5872737, E -1.9560231
+            </div>
+            <!-- Date -->
+            <em>Wed, 25 Jul 2018 09:17 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            20&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            42m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/a13bcc40-7407-46e2-ba00-af4689a5d73c_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/a13bcc40-7407-46e2-ba00-af4689a5d73c_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Primera ducha del viaje
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Longaulnay</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 48.3007717, E -1.9393408
+            </div>
+            <!-- Date -->
+            <em>Wed, 25 Jul 2018 11:47 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            24&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            136m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/b22e4148-a59c-45d6-82be-8d39b6382a50_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/b22e4148-a59c-45d6-82be-8d39b6382a50_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/b87a9a97-67a6-4787-90cb-dcc581e0cc8a_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/b87a9a97-67a6-4787-90cb-dcc581e0cc8a_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Goven</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 48.0239869233936, E -1.78228495221132
+            </div>
+            <!-- Date -->
+            <em>Wed, 25 Jul 2018 14:33 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            28&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            20m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d2f8eff4-cb00-4192-9072-be15ebe8af66_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d2f8eff4-cb00-4192-9072-be15ebe8af66_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Guichen</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 48.0023386, E -1.775859
+            </div>
+            <!-- Date -->
+            <em>Wed, 25 Jul 2018 15:22 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            28&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            18m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/ddc68eb3-4cdc-4cd0-920e-760e44b36f75_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/ddc68eb3-4cdc-4cd0-920e-760e44b36f75_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Bain-de-Bretagne</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 47.8427127, E -1.6809642
+            </div>
+            <!-- Date -->
+            <em>Wed, 25 Jul 2018 18:13 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            27&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            107m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/9cf1a537-0173-42dc-97a1-331bdc74b87c_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/9cf1a537-0173-42dc-97a1-331bdc74b87c_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/7a5e9e76-fbfa-49e9-bea6-747bbc2908f2_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/7a5e9e76-fbfa-49e9-bea6-747bbc2908f2_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 1, 130km y a dormir
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Jans</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 47.6225932, E -1.6131221
+            </div>
+            <!-- Date -->
+            <em>Thu, 26 Jul 2018 09:02 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            24&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            20m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/998d60f9-53d6-455e-aab9-c6f3579b3d37_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/998d60f9-53d6-455e-aab9-c6f3579b3d37_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/aff820ac-f48c-46fe-9c8c-b4cc70a99320_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/aff820ac-f48c-46fe-9c8c-b4cc70a99320_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Fíate de Google Maps
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Nort-sur-Erdre</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 47.4379668, E -1.501295
+            </div>
+            <!-- Date -->
+            <em>Thu, 26 Jul 2018 12:42 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            29&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            14m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/88449967-bc32-402c-adb1-6795a3960b51_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/88449967-bc32-402c-adb1-6795a3960b51_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/6f535347-cd03-4657-ae64-5cea5ab83524_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/6f535347-cd03-4657-ae64-5cea5ab83524_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Nantes</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 47.2147023, E -1.5516064
+            </div>
+            <!-- Date -->
+            <em>Thu, 26 Jul 2018 17:00 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            26&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            17m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/bd21f352-cb1d-4de1-b134-02e832cbbdc7_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/bd21f352-cb1d-4de1-b134-02e832cbbdc7_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/e343d998-4691-41df-880e-a7028d2660c0_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/e343d998-4691-41df-880e-a7028d2660c0_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>La Montagne</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 47.1772726, E -1.6785933
+            </div>
+            <!-- Date -->
+            <em>Thu, 26 Jul 2018 20:13 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            21&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            36m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/556904c7-f60b-4544-839b-41e128c3b47d_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/556904c7-f60b-4544-839b-41e128c3b47d_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/0043e7a9-7bb9-41c4-8a80-d8d457a027e7_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/0043e7a9-7bb9-41c4-8a80-d8d457a027e7_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Mañana fresquita
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>St-Lumine</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 47.0897505, E -1.7322874
+            </div>
+            <!-- Date -->
+            <em>Fri, 27 Jul 2018 07:32 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            18&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            4m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/f9b06fc2-f329-406d-96dd-820f259dc779_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/f9b06fc2-f329-406d-96dd-820f259dc779_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/34056880-894c-44e1-8220-24323cfc5cdc_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/34056880-894c-44e1-8220-24323cfc5cdc_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                La nada
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Touvois</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 46.9633346, E -1.7544568
+            </div>
+            <!-- Date -->
+            <em>Fri, 27 Jul 2018 10:05 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            22&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            19m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/e58e1382-aaf1-4043-811f-2ee231d4f29b_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/e58e1382-aaf1-4043-811f-2ee231d4f29b_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/6e728538-975d-4246-9f89-49dd7a9f09d2_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/6e728538-975d-4246-9f89-49dd7a9f09d2_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Saint-Étienne-du-Bois</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 46.83061, E -1.595616
+            </div>
+            <!-- Date -->
+            <em>Fri, 27 Jul 2018 10:42 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            23&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            39m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/f8d32ef6-4b5e-4067-9816-d6c044959749_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/f8d32ef6-4b5e-4067-9816-d6c044959749_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Le Poiré-sur-Vie</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 46.769521, E -1.5102891
+            </div>
+            <!-- Date -->
+            <em>Fri, 27 Jul 2018 11:51 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#cloudy" />
+                </svg>
+            </div>
+            24&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            58m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/86d7cb9e-daa8-4a26-aeff-49bf2ad99743_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/86d7cb9e-daa8-4a26-aeff-49bf2ad99743_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>La Roche-sur-Yon</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 46.67192363, E -1.43753402
+            </div>
+            <!-- Date -->
+            <em>Fri, 27 Jul 2018 13:59 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#cloudy" />
+                </svg>
+            </div>
+            24&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            70m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/0929c4c8-07ac-4a15-adb4-3fcec7b8ed62_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/0929c4c8-07ac-4a15-adb4-3fcec7b8ed62_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/29f026a3-9ddb-42d5-b8f4-1b13b31d4fe4_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/29f026a3-9ddb-42d5-b8f4-1b13b31d4fe4_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 3, 85km y una cama
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Château-Guibert</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 46.5735529, E -1.2849036
+            </div>
+            <!-- Date -->
+            <em>Sat, 28 Jul 2018 07:53 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            18&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            58m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/253fb551-175f-4957-9643-0c533a78e273_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/253fb551-175f-4957-9643-0c533a78e273_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Luçon</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 46.4491406, E -1.1671863
+            </div>
+            <!-- Date -->
+            <em>Sat, 28 Jul 2018 08:51 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            20&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            6m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/00655e9f-30ad-4288-b8f2-b16012bb8484_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/00655e9f-30ad-4288-b8f2-b16012bb8484_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/ac2dd986-51b4-42d1-b581-ae71dca39998_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/ac2dd986-51b4-42d1-b581-ae71dca39998_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Andilly</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 46.2675257, E -1.0376331
+            </div>
+            <!-- Date -->
+            <em>Sat, 28 Jul 2018 10:49 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            21&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            1m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/a7ce996a-68ab-405f-a364-d77ecac5f5f1_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/a7ce996a-68ab-405f-a364-d77ecac5f5f1_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/607bc5a9-31c2-4b0c-84b0-d4371276fa9a_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/607bc5a9-31c2-4b0c-84b0-d4371276fa9a_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/b2078f0f-4a32-47cf-8dda-2558b3ac62bb_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/b2078f0f-4a32-47cf-8dda-2558b3ac62bb_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Sainte-Soulle</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 46.1874657, E -1.0126493
+            </div>
+            <!-- Date -->
+            <em>Sat, 28 Jul 2018 14:36 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            22&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            38m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/ea2c1bf7-95a6-4c68-8df6-1d81275a8401_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/ea2c1bf7-95a6-4c68-8df6-1d81275a8401_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Todo marrón y amarillo durante 7h
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Rochefort</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 45.9371645, E -0.9628839
+            </div>
+            <!-- Date -->
+            <em>Sat, 28 Jul 2018 14:37 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            24&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            15m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/3f947ec4-1946-47b4-b9d4-875ca5dd662c_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/3f947ec4-1946-47b4-b9d4-875ca5dd662c_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/62a1bb6f-9f71-4e4a-824d-b33f4eafccf9_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/62a1bb6f-9f71-4e4a-824d-b33f4eafccf9_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Champagne</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 45.834035, E -0.9146901
+            </div>
+            <!-- Date -->
+            <em>Sat, 28 Jul 2018 16:32 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            23&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            11m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/27ac9021-36ad-4af6-880e-b67d15ddcba0_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/27ac9021-36ad-4af6-880e-b67d15ddcba0_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/dd9451ca-1c9d-4833-bbe4-66de5d2ee350_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/dd9451ca-1c9d-4833-bbe4-66de5d2ee350_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 4, 150km en plano, viento molestillo
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Médis</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 45.6654922, E -0.9706035
+            </div>
+            <!-- Date -->
+            <em>Sun, 29 Jul 2018 06:56 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            18&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            17m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/3fe1a707-d63f-4e7c-9793-47ec4fe5d951_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/3fe1a707-d63f-4e7c-9793-47ec4fe5d951_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/1fa59f5a-0d81-4e99-b67b-8fed1cf22726_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/1fa59f5a-0d81-4e99-b67b-8fed1cf22726_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Royan</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 45.62306, E -1.04306
+            </div>
+            <!-- Date -->
+            <em>Sun, 29 Jul 2018 08:00 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            19&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            23m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/40630374-0721-4f6a-a3ea-6eb6d57e3227_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/40630374-0721-4f6a-a3ea-6eb6d57e3227_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/65998bfd-4bda-4448-bbb6-9c170697ebff_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/65998bfd-4bda-4448-bbb6-9c170697ebff_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Vendays-Montalivet</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 45.3563809, E -1.0616075
+            </div>
+            <!-- Date -->
+            <em>Sun, 29 Jul 2018 10:15 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            23&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            7m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/27ff1050-8d55-4e2a-a15a-1f507849f7fe_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/27ff1050-8d55-4e2a-a15a-1f507849f7fe_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Hourtin</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 45.1856042, E -1.0588611
+            </div>
+            <!-- Date -->
+            <em>Sun, 29 Jul 2018 12:35 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            26&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            19m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/3eb59287-7d7d-4577-9d0e-07cab510ebee_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/3eb59287-7d7d-4577-9d0e-07cab510ebee_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/902aee27-1f64-4d06-a024-66d31928986a_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/902aee27-1f64-4d06-a024-66d31928986a_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Lacanau</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 45.0198503, E -1.0718307
+            </div>
+            <!-- Date -->
+            <em>Sun, 29 Jul 2018 15:19 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            27&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            19m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/7ceb69be-69cf-4551-930c-cbc6ffbf1c2f_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/7ceb69be-69cf-4551-930c-cbc6ffbf1c2f_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/3fe037b7-7dee-4b31-a027-de633ea0fc2d_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/3fe037b7-7dee-4b31-a027-de633ea0fc2d_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/a48fdff4-9134-430e-8689-b271353e8c71_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/a48fdff4-9134-430e-8689-b271353e8c71_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/b3c65e1a-1a8a-4093-8ecb-06e7025b8586_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/b3c65e1a-1a8a-4093-8ecb-06e7025b8586_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/a996526e-8087-4059-bae0-ecdcc8559c31_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/a996526e-8087-4059-bae0-ecdcc8559c31_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 5, 100km y duermo en la cosa ésta
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Lège-Cap-Ferret</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 44.8058819, E -1.1348522
+            </div>
+            <!-- Date -->
+            <em>Mon, 30 Jul 2018 09:14 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            23&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            13m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/cc721c3e-2dd3-48fb-b0f9-98cd798e439e_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/cc721c3e-2dd3-48fb-b0f9-98cd798e439e_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Biganos</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 44.6379997, E -0.9682331
+            </div>
+            <!-- Date -->
+            <em>Mon, 30 Jul 2018 10:56 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            27&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            12m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/99d4c819-9b17-43e2-971d-538f0dd41786_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/99d4c819-9b17-43e2-971d-538f0dd41786_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Lugos</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 44.5473288, E -0.8731621
+            </div>
+            <!-- Date -->
+            <em>Mon, 30 Jul 2018 13:53 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            29&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            19m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d4a17886-ecd6-48c0-99e1-30682ad16bb5_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d4a17886-ecd6-48c0-99e1-30682ad16bb5_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Liposthey</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 44.31694, E -0.87972
+            </div>
+            <!-- Date -->
+            <em>Mon, 30 Jul 2018 16:05 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            28&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            69m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/4bc2fca8-2f66-47bc-85c3-2c05cbb538cf_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/4bc2fca8-2f66-47bc-85c3-2c05cbb538cf_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/bd62d0cb-6f42-479f-9305-69ae00e86fc7_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/bd62d0cb-6f42-479f-9305-69ae00e86fc7_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Labouheyre</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 44.2128782, E -0.9193061
+            </div>
+            <!-- Date -->
+            <em>Mon, 30 Jul 2018 17:47 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            28&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            72m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/7c24e31c-4270-462a-8b11-a6ccc2b75d76_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/7c24e31c-4270-462a-8b11-a6ccc2b75d76_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/ff85893b-15b3-41e8-9dcd-099f7533affa_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/ff85893b-15b3-41e8-9dcd-099f7533affa_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/5b55645c-4569-4208-88bb-84a16fc9bc86_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/5b55645c-4569-4208-88bb-84a16fc9bc86_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Y de repente se les acabó el asfalto
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Morcenx</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 44.03306, E -0.91472
+            </div>
+            <!-- Date -->
+            <em>Mon, 30 Jul 2018 19:22 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            28&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            76m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d19edbd7-7149-4d6c-8b0c-698baecacdd8_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d19edbd7-7149-4d6c-8b0c-698baecacdd8_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/623e15c2-fad0-4bf5-b8a9-b186cf671e05_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/623e15c2-fad0-4bf5-b8a9-b186cf671e05_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Arjuzanx</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 44.0200519951058, E -0.865824331856827
+            </div>
+            <!-- Date -->
+            <em>Mon, 30 Jul 2018 20:59 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-night" />
+                </svg>
+            </div>
+            25&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            64m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/93476d02-ca98-4ff2-9956-0932ca1ae003_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/93476d02-ca98-4ff2-9956-0932ca1ae003_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d6c878a8-976c-4a98-ad94-407ca098f90a_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d6c878a8-976c-4a98-ad94-407ca098f90a_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/3441c667-aebe-44a0-817b-bcf2ea5a852c_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/3441c667-aebe-44a0-817b-bcf2ea5a852c_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 6, 160km, primer día de calor de verdad, pero buena acampada y nado 
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Tartas</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 43.83, E -0.81
+            </div>
+            <!-- Date -->
+            <em>Tue, 31 Jul 2018 08:43 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            22&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            34m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/e2d65cb9-6c0e-49f4-a0b2-0ca795667679_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/e2d65cb9-6c0e-49f4-a0b2-0ca795667679_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Poyanne</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 43.7564, E -0.8165
+            </div>
+            <!-- Date -->
+            <em>Tue, 31 Jul 2018 10:48 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            23&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            89m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/6bf59156-93b7-4850-a768-c69bc558892b_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/6bf59156-93b7-4850-a768-c69bc558892b_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Lahontan</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 43.53028, E -0.9675
+            </div>
+            <!-- Date -->
+            <em>Tue, 31 Jul 2018 12:28 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            26&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            31m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/35bae156-9f09-4288-810e-665df2c586cf_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/35bae156-9f09-4288-810e-665df2c586cf_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Saint-Palais</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 43.323397, E -1.0345596
+            </div>
+            <!-- Date -->
+            <em>Tue, 31 Jul 2018 16:15 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            27&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            57m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/cd946083-dc93-477d-91e3-a473dde9e17a_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/cd946083-dc93-477d-91e3-a473dde9e17a_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/aa42d71c-7f4d-47ac-98c6-687386fec357_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/aa42d71c-7f4d-47ac-98c6-687386fec357_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/5778914a-6f4e-4062-a758-ce22004c602e_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/5778914a-6f4e-4062-a758-ce22004c602e_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 7, 100km y se acabó lo plano.
+
+De repente también cortaron esta carretera sin avisar, pero al final llegué al destino y ya tengo la credencial de peregrino.
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Larceveau-Arros-Cibits</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 43.2337002, E -1.0955605
+            </div>
+            <!-- Date -->
+            <em>Wed, 01 Aug 2018 08:13 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#cloudy" />
+                </svg>
+            </div>
+            20&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            164m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/78c6a137-6ba3-474f-a244-d9c5ee919ea7_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/78c6a137-6ba3-474f-a244-d9c5ee919ea7_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/3c30eef1-e33f-4d78-b28a-fb0daaa0d3c3_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/3c30eef1-e33f-4d78-b28a-fb0daaa0d3c3_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Empieza la subida
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Saint-Jean-Pied-de-Port</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-fr"></span> N 43.1634271, E -1.2357426
+            </div>
+            <!-- Date -->
+            <em>Wed, 01 Aug 2018 09:32 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#cloudy" />
+                </svg>
+            </div>
+            21&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            183m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/5cc0ea5d-6f48-4d50-978a-54dcf5fc4ec7_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/5cc0ea5d-6f48-4d50-978a-54dcf5fc4ec7_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/e6d179a0-63d1-4dd2-b60a-9bdedb4bc8a4_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/e6d179a0-63d1-4dd2-b60a-9bdedb4bc8a4_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Luzaide</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 43.0609395, E -1.3086503
+            </div>
+            <!-- Date -->
+            <em>Wed, 01 Aug 2018 11:21 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#partly-cloudy-day" />
+                </svg>
+            </div>
+            23&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            497m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/7aecc03d-c858-4797-bf99-21ac009264ce_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/7aecc03d-c858-4797-bf99-21ac009264ce_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/949e698e-5e18-46af-b414-abe276eee4e3_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/949e698e-5e18-46af-b414-abe276eee4e3_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/1b628e10-0899-4c1f-9e29-4e323218dedf_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/1b628e10-0899-4c1f-9e29-4e323218dedf_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Orreaga</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 43.0093668398665, E -1.32031034792789
+            </div>
+            <!-- Date -->
+            <em>Wed, 01 Aug 2018 12:41 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            23&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            953m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d360840f-5e5a-4a41-83c9-d68f853e3828_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d360840f-5e5a-4a41-83c9-d68f853e3828_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/a9d65008-502f-457d-855e-6d4293552554_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/a9d65008-502f-457d-855e-6d4293552554_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/fef471af-03ec-48e5-b3af-a8e3fccd2001_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/fef471af-03ec-48e5-b3af-a8e3fccd2001_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d90d4729-5dd6-4c17-8895-7559a4bb7f25_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d90d4729-5dd6-4c17-8895-7559a4bb7f25_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 8, 60km +1700m
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Erro</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.9392244, E -1.4629553
+            </div>
+            <!-- Date -->
+            <em>Thu, 02 Aug 2018 08:11 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            18&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            698m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/5ef6328a-0259-4e12-bb00-60889c070526_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/5ef6328a-0259-4e12-bb00-60889c070526_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/8bd3719f-e1f0-481f-9672-21821e1d05f4_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/8bd3719f-e1f0-481f-9672-21821e1d05f4_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Puente La Reina – Gares</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.6718609115564, E -1.81508295763626
+            </div>
+            <!-- Date -->
+            <em>Thu, 02 Aug 2018 11:32 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            24&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            350m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/a21f5b5f-1402-488a-88f7-6d609505314d_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/a21f5b5f-1402-488a-88f7-6d609505314d_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Estella-Lizarra</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.66667, E -2.01667
+            </div>
+            <!-- Date -->
+            <em>Thu, 02 Aug 2018 15:36 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            30&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            455m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/b17f86a2-b547-4349-be8b-567e86248f69_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/b17f86a2-b547-4349-be8b-567e86248f69_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d645d55d-7ed4-4d60-a948-92002590a9de_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d645d55d-7ed4-4d60-a948-92002590a9de_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Los Arcos - Urantzia</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.5691214, E -2.1940956
+            </div>
+            <!-- Date -->
+            <em>Thu, 02 Aug 2018 15:41 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            35&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            444m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/6d914835-f7f2-43eb-b0e7-f504d1655728_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/6d914835-f7f2-43eb-b0e7-f504d1655728_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/af05205a-94ea-4a91-975c-9629fd7b630f_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/af05205a-94ea-4a91-975c-9629fd7b630f_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d3406b18-2a86-43c2-94ad-f7fab4999c68_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d3406b18-2a86-43c2-94ad-f7fab4999c68_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 9, 120km y empieza el calor infernal
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Logroño</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.4665341, E -2.4461679
+            </div>
+            <!-- Date -->
+            <em>Fri, 03 Aug 2018 08:12 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            23&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            394m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/be7d5c20-5741-4cb9-a4a7-f89914fcbd47_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/be7d5c20-5741-4cb9-a4a7-f89914fcbd47_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/a73c2054-50f8-4ce5-9971-e796d2510eb6_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/a73c2054-50f8-4ce5-9971-e796d2510eb6_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Azofra</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.434331, E -2.8143336
+            </div>
+            <!-- Date -->
+            <em>Fri, 03 Aug 2018 11:15 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            30&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            536m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/a1b74e4e-2fec-4019-a9c2-ac664966cc96_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/a1b74e4e-2fec-4019-a9c2-ac664966cc96_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/c90fb530-e4fc-4370-be37-34a7b14c7a4a_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/c90fb530-e4fc-4370-be37-34a7b14c7a4a_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Santo Domingo de la Calzada</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.44194, E -2.9525
+            </div>
+            <!-- Date -->
+            <em>Fri, 03 Aug 2018 12:58 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            31&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            640m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/ddf23769-f9c3-4f09-b8d9-33974c81b971_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/ddf23769-f9c3-4f09-b8d9-33974c81b971_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/b870be41-11b8-4ffe-8a3c-bd533b2c6809_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/b870be41-11b8-4ffe-8a3c-bd533b2c6809_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 10, 80km y a descansar
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Villafranca Montes de Oca</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.3903359, E -3.3079235
+            </div>
+            <!-- Date -->
+            <em>Sat, 04 Aug 2018 07:46 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            17&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            936m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/1dfa6446-831d-46ee-b219-32e73405f2cd_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/1dfa6446-831d-46ee-b219-32e73405f2cd_large_image" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/d72acc32-8665-4ee1-92ce-7e5aa479f0e4_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/d72acc32-8665-4ee1-92ce-7e5aa479f0e4_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Burgos</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.34083, E -3.69972
+            </div>
+            <!-- Date -->
+            <em>Sat, 04 Aug 2018 09:31 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            20&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            861m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/328b0b72-0b98-4249-8d3f-8451b1f5d367_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/328b0b72-0b98-4249-8d3f-8451b1f5d367_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Castrojeriz</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.2886533, E -4.1419401
+            </div>
+            <!-- Date -->
+            <em>Sat, 04 Aug 2018 13:48 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            29&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            796m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/edca0670-78a4-4d72-b761-361423bff162_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/edca0670-78a4-4d72-b761-361423bff162_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 11, 120km, un puerto pequeño y calor
+                
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Frómista</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.2650918, E -4.4154216
+            </div>
+            <!-- Date -->
+            <em>Sun, 05 Aug 2018 07:27 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            17&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            780m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/315c0815-53f5-423f-9ef6-836a8aedb1ae_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/315c0815-53f5-423f-9ef6-836a8aedb1ae_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Carrión de los Condes</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.3386974, E -4.6061977
+            </div>
+            <!-- Date -->
+            <em>Sun, 05 Aug 2018 08:12 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            19&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            837m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/eef4f3fc-c0d0-49d8-97cd-85abdc656f9f_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/eef4f3fc-c0d0-49d8-97cd-85abdc656f9f_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Moratinos</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.3659845, E -4.9729858
+            </div>
+            <!-- Date -->
+            <em>Sun, 05 Aug 2018 10:19 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            25&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            861m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://polarsteps.s3.amazonaws.com/u_738317/656608fb-730e-45b7-9a5c-a3cb3055335c_large_image" class="image with-caption"><img src="https://polarsteps.s3.amazonaws.com/u_738317/656608fb-730e-45b7-9a5c-a3cb3055335c_large_image" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="step">
+            <div>
+                <!-- Location -->
+                <h2>Malillos</h2>
+                <!-- Lat and lon -->
+                <span class="flag-icon flag-icon-es"></span> N 42.4594401, E -5.387446
+            </div>
+            <!-- Date -->
+            <em>Sun, 05 Aug 2018 13:45 BST</em><br />
+            <!-- Weather -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#clear-day" />
+                </svg>
+            </div>
+            30&#176;C
+            <!-- Elevation -->
+            <div class="icon baseline">
+                <svg>
+                    <use xlink:href="#elevation" />
+                </svg>
+            </div>
+            813m
+            <!-- Photos -->
+            <div class="masonry">
+                
+                <div class="brick">
+                    <a href="https://user-images.githubusercontent.com/4785303/46809361-338c6f80-cd66-11e8-99f3-ff2d7d3cd065.jpg" class="image with-caption"><img src="https://user-images.githubusercontent.com/4785303/46809361-338c6f80-cd66-11e8-99f3-ff2d7d3cd065.jpg" alt="" /></a>
+                </div>
+                
+                <div class="brick">
+                    <a href="https://user-images.githubusercontent.com/4785303/46809360-338c6f80-cd66-11e8-9c27-57e445a51157.jpg" class="image with-caption"><img src="https://user-images.githubusercontent.com/4785303/46809360-338c6f80-cd66-11e8-9c27-57e445a51157.jpg" alt="" /></a>
+                </div>
+                
+            </div>
+            <!-- Description -->
+            <p> 
+                Día 12, 120km y fin del viaje!
+                
+            </p>
+        </div>
+        
+    </div>
+    
+    <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- Magnific Popup core JS file -->
+    <script src="../../assets/js/jquery.magnific-popup.js"></script>
+    <!-- My custom popup file -->
+    <script src="../../assets/js/popup.js"></script>
+</body>
+
+</html>
